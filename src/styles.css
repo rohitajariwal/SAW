@@ -1,0 +1,11 @@
+/* Importing Tailwind's base, components, and utility styles */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Additional custom styling (if needed) */
+
+body {
+    font-family: Helvetica, sans-serif;
+}
