@@ -22,6 +22,7 @@
                 <a href="#resources" class="hover:text-blue-300 font-semibold">Resources</a>
                 <a href="#blog" class="hover:text-blue-300 font-semibold">Blog</a>
                 <a href="#contact" class="hover:text-blue-300 font-semibold">Contact</a>
+                <input type="text" id="search" placeholder="Search resources...">
             </nav>
             <button class="md:hidden text-white focus:outline-none" id="menu-toggle">☰</button>
         </div>
@@ -32,6 +33,7 @@
             <a href="#resources" class="block py-2 px-4 hover:bg-blue-700">Resources</a>
             <a href="#blog" class="block py-2 px-4 hover:bg-blue-700">Blog</a>
             <a href="#contact" class="block py-2 px-4 hover:bg-blue-700">Contact</a>
+            <input type="text" id="search" placeholder="Search resources...">
         </div>
         <script>
             // Toggle mobile menu
@@ -66,31 +68,20 @@
             <p class="text-gray-700 mt-1">Phishing scams try to trick you into sharing sensitive information like passwords.</p>
             <button class="mt-4 text-white px-4 py-2 rounded transition hover:bg-blue-700 bg-blue-500 shadow-lg shadow-blue-500/50">Learn More</button>
         </div>
-        <section id="resources" class="py-0">
+        <section id="resources-list" class="py-12 bg-gray-100">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl font-bold text-blue-600 mb-6 text-center">Resource Library</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Resource Card Example -->
-                    <div class="bg-white p-6 rounded-tl-lg rounded-br-lg shadow-md">
-                        <h3 class="text-2xl font-semibold text-blue-600 mb-2">Cybersecurity Tool 1</h3>
-                        <p class="text-gray-700 mb-4">Brief description of the tool and its purpose.</p>
-                        <a href="#" class="text-blue-500 hover:underline">Learn More</a>
-                    </div>
-                    <!-- Add more cards as needed -->
+                <div id="resource-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Resource cards will be dynamically inserted here -->
                 </div>
             </div>
         </section>
+
         <section id="blog" class="py-0 bg-gray-100">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl font-bold text-blue-600 mb-6 text-center">Latest Articles</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Blog Post Card Example -->
-                    <div class="bg-white p-6 rounded-tl-lg rounded-br-lg shadow-md">
-                        <h3 class="text-2xl font-semibold text-blue-600 mb-2">Understanding Phishing Scams</h3>
-                        <p class="text-gray-700 mb-4">A brief intro to what phishing scams are and how to avoid them.</p>
-                        <a href="#" class="text-blue-500 hover:underline">Read More</a>
-                    </div>
-                    <!-- Add more cards as needed -->
+                <div id="blog-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Blog cards will be inserted here by JavaScript -->
                 </div>
             </div>
         </section>
@@ -101,7 +92,7 @@
     <section class="bg-blue-600 text-white p-8 my-8 text-center rounded-md mx-6 sm:mx-auto max-w-3xl">
         <h2 class="text-2xl font-semibold">Stay Informed and Protected</h2>
         <p class="mt-4">Sign up for our newsletter to get the latest cybersecurity tips and updates directly to your inbox.</p>
-        <button class="text-white font-bold py-3 px-6 rounded-full hover:bg-blue-700 mt-6 bg-blue-500 shadow-lg shadow-blue-200/80">
+        <button class="text-white font-bold py-3 px-6 rounded-full hover:bg-blue-700 mt-6 bg-blue-500 shadow-lg shadow-blue-200/50">
             Sign Up Now
         </button>
     </section>
@@ -118,8 +109,8 @@
     </section>
 
     <section id="contact" class="py-12">
-        <div class="container mx-auto max-w-md bg-blue-100 outline outline-offset-2 outline-blue-500 text-center">
-            <h2 class="text-3xl font-bold text-blue-600 mb-6 pt-1">Get in Touch</h2>
+        <div class="container mx-auto max-w-md bg-white shadow-md rounded-md text-center">
+            <h2 class="text-3xl font-bold text-blue-600 mb-6 pt-3">Get in Touch</h2>
             <form class="max-w-sm mx-auto p-4">
                 <div class="mb-4">
                     <label class="block text-gray-700 text-lg mb-2" for="name">Name</label>
@@ -133,7 +124,7 @@
                     <label class="block text-gray-700 text-lg mb-2" for="message">Message</label>
                     <textarea id="message" rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none" placeholder="Your Message"></textarea>
                 </div>
-                <button type="submit" class="bg-blue-600 text-white font-bold py-2 px-6 rounded hover:bg-blue-700">Send Message</button>
+                <button type="submit" class="bg-blue-500 text-white font-bold py-2 px-6 rounded hover:bg-blue-700 shadow-lg shadow-blue-500/50">Send Message</button>
             </form>
         </div>
     </section>
@@ -145,7 +136,7 @@
 
         <form id="signupForm" class="mt-4 flex flex-col space-y-4">
             <input type="email" id="email" placeholder="Enter your email" class="p-3 border border-gray-300 rounded-md focus:outline-none focus:border-blue-600" aria-label="Email Address">
-            <button type="submit" class="bg-blue-600 text-white p-3 rounded-md hover:bg-blue-700 transition">Subscribe</button>
+            <button type="submit" class="bg-blue-500 text-white p-3 rounded-md hover:bg-blue-700 shadow-lg shadow-blue-500/50 transition">Subscribe</button>
             <p id="formFeedback" class="text-red-500 text-center hidden">Please enter a valid email address.</p>
         </form>
     </section>
@@ -194,6 +185,58 @@
             }
         });
     </script>
+    <script>
+        // Fetch blog data from blogs.json
+        fetch('blogs.json')
+            .then(response => response.json())
+            .then(blogs => {
+                const blogContainer = document.getElementById('blog-container'); // Select the container
+
+                // Loop through each blog and create a card
+                blogs.forEach(blog => {
+                    const blogCard = document.createElement('div'); // Create a new div for each card
+                    blogCard.classList.add('bg-white', 'p-6', 'rounded-tl-lg', 'rounded-br-lg', 'shadow-md'); // Add card classes
+
+                    // Set the card's HTML content
+                    blogCard.innerHTML = `
+                        <h3 class="text-2xl font-semibold text-blue-600 mb-2">${blog.title}</h3>
+                        <p class="text-gray-700 mb-4">${blog.description}</p>
+                        <a href="${blog.link}" class="text-blue-500 hover:underline">Read More</a>
+                    `;
+
+                    // Append the card to the container
+                    blogContainer.appendChild(blogCard);
+                });
+            })
+            .catch(error => console.error('Error loading blogs:', error));
+    </script>
+    <script>
+        // Fetch resources data from resources.json
+        fetch('resources.json')
+            .then(response => response.json())
+            .then(resources => {
+                const resourceContainer = document.getElementById('resource-container'); // Select the container
+
+                // Loop through each resource and create a card
+                resources.forEach(resource => {
+                    const resourceCard = document.createElement('div'); // Create a new div for each card
+                    resourceCard.classList.add('bg-white', 'p-6', 'rounded-tl-lg', 'rounded-br-lg', 'shadow-md'); // Add card classes
+
+                    // Set the card's HTML content
+                    resourceCard.innerHTML = `
+                        <h3 class="text-2xl font-semibold text-blue-600 mb-2">${resource.title}</h3>
+                        <p class="text-gray-700 mb-4">${resource.description}</p>
+                        <a href="${resource.link}" target="_blank" class="text-blue-500 hover:underline">Learn More</a>
+                    `;
+
+                    // Append the card to the container
+                    resourceContainer.appendChild(resourceCard);
+                });
+            })
+            .catch(error => console.error('Error loading resources:', error));
+    </script>
+
+
 
 </body>
 
